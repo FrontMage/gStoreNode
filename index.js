@@ -7,20 +7,21 @@ class GStoreClient {
     this.host = host;
   }
 
-  basicTemplate(operation = "") {
+  basicTemplate(operation = "", otherParams = "") {
     return `${this.host}/${encodeURIComponent(
       `?operation=${operation}&username=${this.username}&password=${
         this.password
-      }`
+      }${otherParams ? "&" + otherParams : ""}`
     )}`;
   }
 
   // query given database with sparql
-  async query(db, sparql) {
+  async query(db = "", sparql = "") {
     // 请求字符串居然有顺序要求。。。
-    const queryTemplate = `${this.basicTemplate(
-      "query"
-    )}&db_name=${db}&format=json&sparql=${sparql}`;
+    const queryTemplate = this.basicTemplate(
+      "query",
+      `db_name=${db}&format=json&sparql=${sparql}`
+    );
 
     return await request({
       uri: queryTemplate,
@@ -36,9 +37,10 @@ class GStoreClient {
   }
 
   async build(db = "", dataPath = "") {
-    const buildTemplate = `${this.basicTemplate(
-      "build"
-    )}&db_name=${db}&ds_path=${dataPath}`;
+    const buildTemplate = this.basicTemplate(
+      "build",
+      `&db_name=${db}&ds_path=${dataPath}`
+    );
 
     return await request({
       uri: buildTemplate,
@@ -47,7 +49,7 @@ class GStoreClient {
   }
 
   async load(db = "") {
-    const loadTemplate = `${this.basicTemplate("load")}&db_name=${db}`;
+    const loadTemplate = this.basicTemplate("load", `db_name=${db}`);
 
     return await request({
       uri: loadTemplate,
@@ -56,7 +58,7 @@ class GStoreClient {
   }
 
   async unload(db = "") {
-    const unloadTemplate = `${this.basicTemplate("unload")}&db_name=${db}`;
+    const unloadTemplate = this.basicTemplate("unload", `db_name=${db}`);
 
     return await request({
       uri: unloadTemplate,
@@ -65,7 +67,7 @@ class GStoreClient {
   }
 
   async monitor(db = "") {
-    const monitorTemplate = `${this.basicTemplate("monitor")}&db_name=${db}`;
+    const monitorTemplate = this.basicTemplate("monitor", `db_name=${db}`);
 
     return await request({
       uri: monitorTemplate,
