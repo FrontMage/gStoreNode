@@ -1,6 +1,6 @@
 {
   "name": "gstore-whu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gstore client for node",
   "main": "index.js",
   "scripts": {
