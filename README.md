@@ -6,6 +6,10 @@ Node.js client for [gStore](https://github.com/Caesar11/gStore)
 
 `npm install https://github.com/FrontMage/gStoreNode`
 
+or
+
+`npm install gstore-whu --save`
+
 ```javascript
 const GStoreClient = rquire("gStoreNode");
 const client = new GStoreClient(
@@ -19,7 +23,3 @@ const client = new GStoreClient(
   console.log(result);
 })();
 ```
-
-### TODO
-
-- publish to npm
