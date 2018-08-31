@@ -11,7 +11,7 @@ or
 `npm install gstore-whu --save`
 
 ```javascript
-const GStoreClient = rquire("gStoreNode");
+const GStoreClient = rquire("gstore-whu");
 const client = new GStoreClient(
   "username",
   "password",
