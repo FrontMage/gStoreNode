@@ -4,7 +4,7 @@
   "description": "gstore client for node",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/FrontMage/gStoreNode#readme",
   "dependencies": {
+    "request": "^2.88.0",
     "request-promise": "^4.2.2"
   }
 }
